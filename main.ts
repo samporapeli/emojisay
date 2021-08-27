@@ -39,6 +39,11 @@ const emojifiles = {
      ╲  👀
         🐽 
         👅
+    `,
+    cowEmoji: `
+    ╲
+     ╲
+      🐄
     `
 }
 
