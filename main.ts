@@ -22,17 +22,14 @@ const speechBubble = (message: string) => {
     
     const rows: string[] = formattedMessage.split('\n')
     // words are now nicely placed and put into rows
-    let bubble: string = ` ${'_'.repeat(lineLength)} `
+    let bubble: string = `┌${'─'.repeat(lineLength)}┐`
     for (let i: number = 0; i < rows.length; i++) {
         const row: string = rows[i]
         bubble += '\n'
         const padding: string = ' '.repeat(lineLength - row.length - 2)
-        if (rows.length === 1) bubble += `< ${row + padding} >`
-        else if (i === 0) bubble += `/ ${row + padding} \\`
-        else if (i < rows.length - 1) bubble += `| ${row + padding} |`
-        else if (i === rows.length - 1) bubble += `\\ ${row + padding} /`
+        bubble += `│ ${row + padding} │`
     }
-    bubble += `\n ${'-'.repeat(lineLength)}`
+    bubble += `\n└${'─'.repeat(lineLength)}┘`
     return bubble
 }
 
