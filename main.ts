@@ -1,3 +1,16 @@
+const arg: { [key: string]: any } = {
+    file: 'emojicow',
+    words: Deno.args,
+}
+
+if (Deno.args.includes('-f')) {
+    const flagIndex = Deno.args.indexOf('-f')
+    arg.file = Deno.args[flagIndex + 1]
+    arg.words = [...Deno.args]
+    delete arg.words[flagIndex + 1]
+    delete arg.words[flagIndex]
+}
+
 const speechBubble = (message: string) => {
     const words = message.split(' ')
     const longestWord = words.length > 0
@@ -33,7 +46,7 @@ const speechBubble = (message: string) => {
     return bubble
 }
 
-const emojifiles = {
+const emojifiles: { [name: string]: string } = {
     emojicow: `
     ╲  👂👂
      ╲  👀
@@ -44,8 +57,14 @@ const emojifiles = {
     ╲
      ╲
       🐄
+    `,
+    farm: `
+   ╲
+    ╲
+   🐖🐎 🌱 🐄
     `
 }
 
-const message: string = Deno.args.join(' ')
-console.log(speechBubble(message) + emojifiles.emojicow)
+const message: string = arg.words.join(' ')
+const emojifile: string = emojifiles[arg.file] ? arg.file : 'emojicow'
+console.log(speechBubble(message) + emojifiles[emojifile])

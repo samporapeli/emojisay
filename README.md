@@ -23,7 +23,6 @@ Output:
 
 ## Known issues
 * More and better emojifiles required
-    * A way for changing between emojifiles should be implemented, e.g. using command line arguments
 * Does not read from stdin, only command line arguments
 * Speech bubble is not resized as well as it could
 * Long words are not split, but speech bubble should be extended instead
